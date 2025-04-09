@@ -1,3 +1,11 @@
+FORFEIT startup User Interface for Soni CS 422
+
+Actively worked on by John Ho, Red Reyes, and Matthew Danque
+
+AI USAGE STATEMENT: There was no AI in the creation and completion of the UI for this group project.
+
+REMOVE BELOW WHEN TURNING IN FINAL PROJECT OR WHENEVER WE TURN IT in
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
