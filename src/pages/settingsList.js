@@ -1,15 +1,8 @@
-import {useNavigate} from "react-router-dom";
-import {AppBar, Box, List, ListItemText, ListItemButton, Divider, Toolbar, IconButton} from "@mui/material";
+import {AppBar, Box, List, ListItemText, ListItemButton, Toolbar, IconButton} from "@mui/material";
 import {ArrowBack, Settings} from '@mui/icons-material';
+import SetNavigate from "../components/SetNavigate";
 
 const SettingsList = () => {
-    const navigate = useNavigate();
-
-    const testClick = (event) => {
-        event.preventDefault();
-        navigate("/test");
-    }
-
     return (
         <>
             <Box sx={{flexGrow: 1}}>
@@ -25,17 +18,9 @@ const SettingsList = () => {
                 </AppBar>
             </Box>
             <List sx={{backgroundColor: '#e8f1ff', width:'100%', flexGrow: 1}}>
-                <ListItemButton onClick={testClick}>
-                    <ListItemText>Profile</ListItemText>
-                </ListItemButton>
-                <Divider />
-                <ListItemButton>
-                    <ListItemText>Credit Card Information</ListItemText>
-                </ListItemButton>
-                <Divider/>
-                <ListItemButton>
-                    <ListItemText>Terminate Account</ListItemText>
-                </ListItemButton>
+                <SetNavigate text = {"Profile"} destination={"/Profile"}/>
+                <SetNavigate text = {"Credit Card Information"} destination={"/CardSetup"}/>
+                <SetNavigate text = {"Terminate Account"} destination={"/"}/>
             </List>
         </>
     );
