@@ -1,4 +1,4 @@
-import {AppBar, Box, List, ListItemText, ListItemButton, Toolbar, IconButton} from "@mui/material";
+import {AppBar, Box, List, Toolbar, IconButton} from "@mui/material";
 import {ArrowBack, Settings} from '@mui/icons-material';
 import SetNavigate from "../components/SetNavigate";
 
@@ -8,12 +8,10 @@ const SettingsList = () => {
             <Box sx={{flexGrow: 1}}>
                 <AppBar position="static">
                     <Toolbar>
-                        <IconButton size="large" edge="start" sx={{}}>
+                        <IconButton size="large" edge="start">
                             < ArrowBack />
                         </IconButton>
-                        <IconButton size="large" sx={{}}>
-                            <Settings />
-                        </IconButton>
+                        <Settings size="large" sx={{flexGrow: 1}}/>
                     </Toolbar>
                 </AppBar>
             </Box>
