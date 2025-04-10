@@ -4,6 +4,12 @@ import {ArrowBack, Settings} from '@mui/icons-material';
 
 const SettingsList = () => {
     const navigate = useNavigate();
+
+    const testClick = (event) => {
+        event.preventDefault();
+        navigate("/test");
+    }
+
     return (
         <>
             <Box sx={{flexGrow: 1}}>
@@ -19,7 +25,7 @@ const SettingsList = () => {
                 </AppBar>
             </Box>
             <List sx={{backgroundColor: '#e8f1ff', width:'100%', flexGrow: 1}}>
-                <ListItemButton onClick={navigate('/submitTask')}>
+                <ListItemButton onClick={testClick}>
                     <ListItemText>Profile</ListItemText>
                 </ListItemButton>
                 <Divider />
