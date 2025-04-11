@@ -15,7 +15,8 @@ const CreditCardInfo = () => {
                         <TextField variant="standard" label = "Name"/>
                         <TextField variant="standard" label = "Credit Card #"/>
                         <TextField variant="standard" label = "CVV"/>
-                        <Button variant="outlined" sx={{marginTop: 3, fontWeight:"bold"}}>Submit</Button>
+                        <Button variant="outlined" sx={{marginTop: 3, fontWeight:"bold", 
+                            backgroundColor: "#67f5a0", color:"white", fontSize:17}}>Submit</Button>
                     </Stack>
                 </Container>
             </Container>
