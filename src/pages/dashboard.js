@@ -20,6 +20,12 @@ const Dashboard = () => {
         );
     }
 
+    const navigate = useNavigate();
+
+    const toSettings = (event) => {
+        event.preventDefault();
+        navigate("/Settings");
+    }
     
 
     return (
@@ -37,7 +43,7 @@ const Dashboard = () => {
                             <HomeIcon />
                             {/*repace with streak icon later*/}
                         </Icon>
-                        <IconButton size = "large" sx={{}}>
+                        <IconButton size = "large" onClick={toSettings} sx={{}}>
                             <Settings />
                         </IconButton>
                     </Toolbar>
