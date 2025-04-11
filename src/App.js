@@ -5,6 +5,7 @@ import SettingsList from "./pages/settingsList";
 import Dashboard  from "./pages/dashboard";
 import CreditCardInfo from "./pages/settingsPages/creditCardInfo";
 import Profile from "./pages/settingsPages/profile"
+import Signup from "./pages/signup";
 import TerminateAccount from "./pages/settingsPages/terminateAccount";
 import Security from "./pages/settingsPages/security";
 
