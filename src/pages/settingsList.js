@@ -1,24 +1,17 @@
-import {AppBar, Box, List, Toolbar, IconButton} from "@mui/material";
-import {ArrowBack, Settings} from '@mui/icons-material';
-import SetNavigate from "../components/SetNavigate";
+import {List} from "@mui/material";
+import SetNavigate from "../components/SetNavigate"
+import SettingsBar from "../components/settingsTopBar";
 
 const SettingsList = () => {
+    
     return (
         <>
-            <Box sx={{flexGrow: 1}}>
-                <AppBar position="static">
-                    <Toolbar>
-                        <IconButton size="large" edge="start">
-                            < ArrowBack />
-                        </IconButton>
-                        <Settings size="large" sx={{flexGrow: 1}}/>
-                    </Toolbar>
-                </AppBar>
-            </Box>
+            <SettingsBar previousDest={"/"}/>
             <List sx={{backgroundColor: '#e8f1ff', width:'100%', flexGrow: 1}}>
                 <SetNavigate text = {"Profile"} destination={"/Profile"}/>
                 <SetNavigate text = {"Credit Card Information"} destination={"/CardSetup"}/>
-                <SetNavigate text = {"Terminate Account"} destination={"/"}/>
+                <SetNavigate text = {"Security"} destination={"/Security"}/>
+                <SetNavigate text = {"Terminate Account"} destination={"/Terminate"}/>
             </List>
         </>
     );

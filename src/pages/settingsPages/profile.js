@@ -1,6 +1,8 @@
+import SettingsBar from "../../components/settingsTopBar";
+
 const Profile = () => {
     return (
-        <div></div>
+        <SettingsBar previousDest={"/Settings"}/>
     );
 }
 
