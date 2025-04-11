@@ -3,6 +3,7 @@ import {Routes, Route} from "react-router-dom";
 //Imported Components (pages)
 import SettingsList from "./pages/settingsList";
 import Dashboard  from "./pages/dashboard";
+import Signup from "./pages/signup";
 
 function App() {
   return (
