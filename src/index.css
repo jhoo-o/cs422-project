@@ -3,3 +3,27 @@ body, html {
     height:100%;
     width:100%;
 }
+
+.rbc-calendar{
+    font-size: 2vw;
+}
+
+.rbc-header{
+    font-size: 4vw;
+}
+
+.rbc-button-link{
+    font-size: 4vw;
+}
+
+.rbc-toolbar-label{
+    font-size: 8vw;
+}
+
+.rbc-btn-group > button{
+    font-size: 3vw;
+}
+
+.MuiBox-root > .MuiList-root > .MuiListItem-root {
+    font-size: 2vw;
+}
