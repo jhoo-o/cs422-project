@@ -1,7 +1,7 @@
 FORFEIT startup User Interface for Soni CS 422
 
 Actively worked on by John Ho, Red Reyes, and Matthew Danque in group 8.
-React Library Used: https://mui.com/material-ui/getting-started/
+React Library Used: Material UI (https://mui.com/material-ui/getting-started/)
 
 AI USAGE STATEMENT: There was no AI in the creation and completion of the UI for this group project.
 

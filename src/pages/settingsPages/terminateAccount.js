@@ -1,7 +1,24 @@
-import {Button, Typography, Container, Grid} from "@mui/material"
+import {Button, Typography, Container, DialogContent, DialogTitle, Dialog, DialogContentText, DialogActions} from "@mui/material"
+import {useState} from "react";
 import SettingsBar from "../../components/settingsTopBar";
+import { useNavigate } from "react-router-dom";
 
 const TerminateAccount = () => {
+
+    const [popupCheck, setOpen] = useState(false);
+    const navigate = useNavigate();
+
+    const popup = (event) => {
+        event.preventDefault();
+        setOpen(true);
+    }
+
+    const handleClose = (event) => {
+        event.preventDefault();
+        navigate("/Sign-Up");
+    }
+
+
     return (
         <>
             <SettingsBar previousDest={"/Settings"}/>
@@ -15,9 +32,25 @@ const TerminateAccount = () => {
                     Forfeit app again. Your data will not be saved after you delete your account, as this decision is permanent.
                 </Typography>
                 <Container fixed sx={{display: "flex", flexGrow: 1, justifyContent: "center", width: "100%"}}>
-                    <Button variant="outlined" sx={{flewGrow: 1, color: "white", fontWeight: "bold",
+                    <Button variant="outlined"  onClick={popup} sx={{flewGrow: 1, color: "white", fontWeight: "bold",
                         backgroundColor: "red", padding: 1, paddingLeft: 8, paddingRight: 8, display: "flex"}}>Delete My Account</Button>
                 </Container>
+                <Dialog open={popupCheck} aria-labelledby="alert-dialog-title" aria-describedby="alert-dialog-description">
+                    <DialogTitle>
+                        {"Are you sure you wish to remove your account?"}
+                    </DialogTitle>
+                    <DialogContent>
+                        <DialogContentText>
+                            This decision is permanent and cannot be reversed under any pretenses. You will
+                            need to create a new account in order to use the Forfeit app again.
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button variant="outlined" onClick={handleClose} sx={{flexGrow:1,
+                            color: "white", backgroundColor:"red", fontWeight:"bold"
+                        }}>Delete My Account.</Button>
+                    </DialogActions>
+                </Dialog>
             </Container>
         </>
     );

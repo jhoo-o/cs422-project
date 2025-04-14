@@ -7,6 +7,7 @@ import CreditCardInfo from "./pages/settingsPages/creditCardInfo";
 import Profile from "./pages/settingsPages/profile"
 import Signup from "./pages/signup";
 import TerminateAccount from "./pages/settingsPages/terminateAccount";
+import SubmitTask from "./pages/submitTask";
 
 function App() {
   return (
@@ -18,6 +19,8 @@ function App() {
         <Route exact path = "/CardSetup" element={<CreditCardInfo/>}/>
         <Route exact path = "/Profile" element={<Profile />}/>
         <Route exact path = "/Terminate" element={<TerminateAccount/>}/>
+        <Route exact path = "/Sign-Up" element={<Signup/>}/>
+        <Route exact path = "/Submit-Task" element = {<SubmitTask/>}/>
       </Routes>
     </div>
   );
