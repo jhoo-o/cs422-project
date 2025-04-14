@@ -8,16 +8,23 @@ const TerminateAccount = () => {
     const [popupCheck, setOpen] = useState(false);
     const navigate = useNavigate();
 
+    //opens dialog
     const popup = (event) => {
         event.preventDefault();
         setOpen(true);
     }
 
-    const handleClose = (event) => {
+    //we jump to the sing-up section
+    const handleTermination = (event) => {
         event.preventDefault();
         navigate("/Sign-Up");
     }
 
+    //this will close popup
+    const handleClose = (event) => {
+        event.preventDefault();
+        setOpen(false);
+    }
 
     return (
         <>
@@ -46,9 +53,12 @@ const TerminateAccount = () => {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button variant="outlined" onClick={handleClose} sx={{flexGrow:1,
+                        <Button variant="outlined" onClick={handleTermination} sx={{ flexGrow: 1,
                             color: "white", backgroundColor:"red", fontWeight:"bold"
-                        }}>Delete My Account.</Button>
+                        }}>Delete My Account</Button>
+                        <Button variant="outlined" onClick={handleClose} sx={{ flexGrow: 1, fontWeight:"bold",
+                        color:"white", backgroundColor:"#334af5"
+                        }}> I Changed My Mind</Button>
                     </DialogActions>
                 </Dialog>
             </Container>
