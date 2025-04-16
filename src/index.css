@@ -4,26 +4,56 @@ body, html {
     width:100%;
 }
 
-.rbc-calendar{
-    font-size: 2vw;
+@media screen and (max-width: 1200px){
+    .rbc-calendar{
+    font-size: 1.75vw;
+    }
+
+    .rbc-header{
+        font-size: 4vw;
+    }
+
+    .rbc-button-link{
+        font-size: 4vw;
+    }
+
+    .rbc-toolbar-label{
+        font-size: 6vw;
+        height: 6vh;
+    }
+
+    .rbc-btn-group > button{
+        font-size: 3vw;
+    }
+
+    .MuiBox-root > .MuiList-root > .MuiListItem-root {
+        font-size: 2vw;
+    }
 }
 
-.rbc-header{
-    font-size: 4vw;
-}
+@media screen and (min-width: 1201px) {
+    .rbc-calendar{
+        font-size: 2vh;
+    }
 
-.rbc-button-link{
-    font-size: 4vw;
-}
+    .rbc-header{
+        font-size: 4vh;
+    }
 
-.rbc-toolbar-label{
-    font-size: 8vw;
-}
+    .rbc-button-link{
+        font-size: 4vwh;
+    }
 
-.rbc-btn-group > button{
-    font-size: 3vw;
-}
+    .rbc-toolbar-label{
+        font-size: 6vh;
+        height: 6vw;
+    }
 
-.MuiBox-root > .MuiList-root > .MuiListItem-root {
-    font-size: 2vw;
+    .rbc-btn-group > button{
+        font-size: 3vh;
+    }
+
+    .MuiBox-root > .MuiList-root > .MuiListItem-root {
+        font-size: 2vh;
+    }
 }
