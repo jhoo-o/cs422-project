@@ -3,8 +3,7 @@ import {useNavigate} from "react-router-dom";
 import {AppBar, Box, List, ListItemText, ListItemButton, 
     Divider, Toolbar, IconButton, Icon, SvgIcon, ListItem, 
     ListItemAvatar, Avatar, Stack, Typography, Fab} from "@mui/material";
-import {ArrowBack, Settings} from '@mui/icons-material';
-import AddIcon from '@mui/icons-material/Add';
+import {ArrowBack, Settings, Add} from '@mui/icons-material';
 import picture from './added_assets/circle.png';
 import { Calendar, momentLocalizer} from 'react-big-calendar';
 import moment from 'moment';
@@ -31,13 +30,18 @@ const Dashboard = () => {
         event.preventDefault();
         navigate("/Settings");
     }
+
+    const toTaskCreate = (event) => {
+        event.preventDefault();
+        navigate('/Task_Create')
+    }
     
     const [eventsData, setEventsData] = useState(events);
 
     return (
         <div>
             {/* Mobile */}
-            <MediaQuery maxWidth={1200}>
+            <MediaQuery maxWidth={1081}>
                 {/*WHY ARE COMMENTS LIKE THIS, anyways stole this box from matthew, store settings bar*/}
                 <Box sx={{flexGrow: 1, height: '4vh', justifyContent: 'space-between'}}>
                     <AppBar position="static">
@@ -47,7 +51,7 @@ const Dashboard = () => {
                                 {/*change later to logo once we have it kind just meant 
                                 to make the center look center*/}
                             </Box>
-                            <Box width='4vh' height = '4vw'>
+                            <Box width='5vw' height = '4vh'>
                                 <img src={streak} alt = 'streak' style ={{width: '100%', height:'100%', objectFit: 'contain'}}/>
                             </Box>
                             <IconButton size = "large" onClick={toSettings} sx={{}}>
@@ -262,8 +266,12 @@ const Dashboard = () => {
                         </ListItem>
                     </List>
                 </Box>
-                <Fab color = 'primary' aria-label='add' style ={{position: 'fixed', right: '5vw', top: '80vh', height: '12vh', width: '12vh'}}>
-                    <AddIcon/>
+                <Fab color = 'primary' aria-label='add' onClick={toTaskCreate}
+                style ={{position: 'fixed', right: '5vw', top: '80vh', height: '12vh', width: '12vh'}}>
+                    <SvgIcon sx={{height: '5vh', width: '5vh'}}>
+                        <Add />
+                    </SvgIcon>
+                    
                 </Fab>
             </MediaQuery>
             <MediaQuery minWidth={1201}>
@@ -275,7 +283,7 @@ const Dashboard = () => {
                                 {/*change later to logo once we have it kind just meant 
                                 to make the center look center*/}
                             </Box>
-                            <Box width='5vh' height = '5vh'>
+                            <Box width='5vw' height = '4vh'>
                                     <img src={streak} alt = 'streak' style ={{width: '100%', height:'100%', objectFit: 'contain'}}/>
                             </Box>
                             <IconButton size = "large" onClick={toSettings} sx={{}}>
@@ -480,8 +488,12 @@ const Dashboard = () => {
                         </List>
                     </Box>
                 </Stack>
-                <Fab color = "primary" aria-label='add' style={{position: 'fixed', right: '5vw', top: '80vh', height: '12vh', width: '12vh'}}>
-                    <AddIcon/>
+                <Fab color = "primary" aria-label='add' onClick={toTaskCreate}
+                    style={{position: 'fixed', right: '5vw', top: '75vh', height: '10vw', width: '10vw'}}>
+                    <SvgIcon sx={{height:'5vw', width: '5vw'}}>
+                        <Add />
+                    </SvgIcon>
+                    
                 </Fab>
             </MediaQuery>
         </div>
