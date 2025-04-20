@@ -8,7 +8,7 @@ AI USAGE STATEMENT: There was no AI in the creation and completion of the UI for
 REMOVE BELOW WHEN TURNING IN FINAL PROJECT OR WHENEVER WE TURN IT in
 
 FOR MY GROUPMMATES. PLEASE RUN NPM INSTALL ON FIRST RUN OF THIS PROJECT, AND THE NPM START.
-Also for my groupmmates also run 'npm install react-big-calendar'
+Also for my groupmmates also run 'npm install react-big-calendar' and 'npm install --save react-responsive'
 
 # Getting Started with Create React App
 
