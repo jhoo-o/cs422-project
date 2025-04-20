@@ -4,6 +4,7 @@ import {AppBar, Box, List, ListItemText, ListItemButton, Divider, Toolbar, IconB
 } from "@mui/material";
 import {ArrowBack, Settings} from '@mui/icons-material';
 
+
 const Signup = () => {
 
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ const Signup = () => {
     }
 
     return (
-        <Container sx={{height:"40%", width:"50%", backgroundColor:'#e8f1ff', mt:15,
+        <Container sx={{height:"50%", width:"50%", backgroundColor:'#e8f1ff', mt:15,
             justifyContent:"center", flexGrow: 1, boxShadow: 10, borderRadius: 7, padding: 5, paddingBottom: 5}}>
             <Container fixed sx={{flexGrow: 1, width: "100%", justifyContent:"center"}}>
                 <Typography variant="h5">
@@ -25,7 +26,7 @@ const Signup = () => {
                     <TextField variant="standard" label = "Email"/>
                     <TextField variant="standard" label = "Username"/>
                     <TextField variant="standard" label = "Password"/>
-                    <TextField variant='stanard' label = 'Confirm Password'/>
+                    <TextField variant='standard' label = 'Confirm Password'/>
                     <Button variant="outlined" sx={{marginTop: 3, fontWeight:"bold", 
                         backgroundColor: "#67f5a0", color:"white", fontSize:17}} onClick = {toDashboard}>
                             Create Account

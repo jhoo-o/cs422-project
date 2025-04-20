@@ -6,7 +6,7 @@ import {Box, List, ListItemText, ListItemButton,
 import {Help} from '@mui/icons-material';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import NumberField from './numberField.tsx'
-import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
+import { DemoContainer} from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';
@@ -14,15 +14,12 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import MediaQuery from 'react-responsive';
 
 
-const Task_Create = () => {
-    const id = React.useId();
+const Subtask_Create = () => {
     const navigate = useNavigate();
     const toSubtask = (event) => {
         event.preventDefault();
-        navigate('/Subtask_Create');
+        navigate('/Create_Subtask');
     }
-
-    
 
     const [anchorEl0, setAnchorEl0] = React.useState(null);
 
@@ -42,7 +39,7 @@ const Task_Create = () => {
         <div>
             {/* mobile / tablet */}
             <MediaQuery maxWidth={1080}>
-            <ConfirmBar previousDest={'/dashboard'} TextLabel={'New Task'} nextDest={'/dashboard'}/> {/* CHANGE nextDest later, rest should take like an hour*/ }
+            <ConfirmBar previousDest={'/task_create'} TextLabel={'New Subtask'}/>
             <Box sx = {{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
                 <Box sx = {boxStyle}>
                     <Typography variant = 'h3' sx = {{paddingRight: 5}}>
@@ -166,4 +163,4 @@ const Task_Create = () => {
     )
 }
 
-export default Task_Create;
+export default Subtask_Create;
