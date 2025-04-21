@@ -8,6 +8,7 @@ import Profile from "./pages/settingsPages/profile"
 import Signin from "./pages/signin";
 import TerminateAccount from "./pages/settingsPages/terminateAccount";
 import Task_Create from "./pages/task_create";
+import SubmitTask from "./pages/submitTask";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route exact path = "/Terminate" element={<TerminateAccount/>}/>
         <Route exact path = "/Dashboard" element = {<Dashboard/>}/>
         <Route exact path = "/Task-Create" element = {<Task_Create/>}/>
+        <Route exact path = "/SubmitTask" element = {<SubmitTask/>}/>
       </Routes>
     </div>
   );
