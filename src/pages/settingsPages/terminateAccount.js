@@ -17,7 +17,7 @@ const TerminateAccount = () => {
     //we jump to the sing-up section
     const handleTermination = (event) => {
         event.preventDefault();
-        navigate("/Sign-Up");
+        navigate("/Signup");
     }
 
     //this will close popup

@@ -1,7 +1,8 @@
 import ConfirmBar from '../components/ConfirmTasksBar';
 import React, { useState } from 'react';
+import dayjs from 'dayjs';
 import {useNavigate} from "react-router-dom";
-import {Box, List, ListItemText, ListItemButton, 
+import {Box, List, ListItemText, ListItemButton, Slider,
     Icon, ListItem, Typography, Popover, TextField} from "@mui/material";
 import {Help} from '@mui/icons-material';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -14,13 +15,9 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import MediaQuery from 'react-responsive';
 
 
-const Task_Create = () => {
+const Task_Detail = () => {
     const id = React.useId();
     const navigate = useNavigate();
-    const toSubtask = (event) => {
-        event.preventDefault();
-        navigate('/Subtask_Create');
-    }
 
     
 
@@ -42,19 +39,13 @@ const Task_Create = () => {
         <div>
             {/* mobile / tablet */}
             <MediaQuery maxWidth={1080}>
-            <ConfirmBar previousDest={'/dashboard'} TextLabel={'New Task'} nextDest={'/dashboard'}/> {/* CHANGE nextDest later, rest should take like an hour*/ }
+            <ConfirmBar previousDest={'/dashboard'} TextLabel={'Build the Table'} nextDest={'/dashboard'}/>
             <Box sx = {{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
-                <Box sx = {boxStyle}>
-                    <Typography variant = 'h3' sx = {{paddingRight: 5}}>
-                        Task Name:
-                    </Typography>
-                    <TextField  label="Name here..." variant="filled"/>
-                </Box>
                 <Box sx = {boxStyle}>
                     <Typography variant = 'h3' sx = {{paddingRight: 5}}>
                         Points:
                     </Typography>
-                    <NumberField/>
+                    <NumberField value = {4}/>
                     <Icon sx = {{width: '2rem', height: '2rem', marginLeft: 2}} 
                     onMouseEnter = {handlePopoverHoverOpen} onMouseLeave = {handlePopoverHoverClose} aria-haspopup='true'>
                         <Help sx = {{width: '2rem', height: '2rem'}}/>
@@ -69,7 +60,7 @@ const Task_Create = () => {
                     <Typography variant = 'h3' sx = {{paddingRight: 5}}>
                        Priority Level:
                     </Typography>
-                    <NumberField/>
+                    <NumberField defaultValue = {3}/>
                 </Box>
                 <Box sx = {boxStyle}>
                     <Typography variant = 'h3' sx = {{paddingRight: 5}}>
@@ -77,7 +68,7 @@ const Task_Create = () => {
                     </Typography>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DemoContainer components={['MobileDatePicker']}>
-                            <MobileDatePicker/>
+                            <MobileDatePicker defaultValue={dayjs('05-01-2025')}/>
                         </DemoContainer>
                     </LocalizationProvider>
                 </Box>
@@ -87,8 +78,8 @@ const Task_Create = () => {
                     </Typography>
                     <List sx={{border: 1, borderRadius: '5px'}}>
                         <ListItem disablePadding>
-                            <ListItemButton onClick = {toSubtask}>
-                                <ListItemText primary = '+ New Sub-Task' />
+                            <ListItemButton onClick>
+                                <ListItemText primary = 'UNBOX FURNITURE' />
                             </ListItemButton>
                         </ListItem>
                     </List>
@@ -97,24 +88,24 @@ const Task_Create = () => {
                     <Typography variant = 'h3' sx = {{paddingRight: 5}}>
                         Details:
                     </Typography>
-                    <TextField  label="Name here..." variant="filled" size = 'medium' rows={8} multiline = {true} sx={{width: '30rem'}}/>
+                    <TextField variant="filled" size = 'medium' rows={8} multiline = {true} sx={{width: '30rem'}} defaultValue = "Don't break it"/>
+                </Box>
+                <Box sx = {boxStyle}>
+                    <Typography variant = 'h3' sx = {{paddingRight: 5}}>
+                        Progress:
+                    </Typography>
+                    <Slider defaultValue={0} aria-label="Default" valueLabelDisplay="auto" />
                 </Box>
             </Box>
             </MediaQuery>
             <MediaQuery minWidth={1081}>
-                <ConfirmBar previousDest={'/dashboard'} TextLabel={'New Task'}/>
+                <ConfirmBar previousDest={'/dashboard'} TextLabel={'Build the Table'} nextDest={'/dashboard'}/>
                 <Box sx = {{flexGrow: 1, display: 'flex', flexDirection: 'row', flexWrap: 'wrap'}}>
-                    <Box sx = {boxStyle}>
-                        <Typography variant = 'h3' sx = {{paddingRight: 5}}>
-                            Task Name:
-                        </Typography>
-                        <TextField  label="Name here..." variant="filled"/>
-                    </Box>
                     <Box sx = {boxStyle}>
                         <Typography variant = 'h3' sx = {{paddingRight: 5}}>
                             Points:
                         </Typography>
-                        <NumberField/>
+                        <NumberField defaultValue = {4}/>
                         <Icon sx = {boxStyle} 
                         onMouseEnter = {handlePopoverHoverOpen} onMouseLeave = {handlePopoverHoverClose} aria-haspopup='true'>
                             <Help sx = {{width: '2rem', height: '2rem'}}/>
@@ -129,7 +120,7 @@ const Task_Create = () => {
                         <Typography variant = 'h3' sx = {{paddingRight: 5}}>
                         Priority Level:
                         </Typography>
-                        <NumberField/>
+                        <NumberField defaultValue = {2}/>
                     </Box>
                     <Box sx = {boxStyle}>
                         <Typography variant = 'h3' sx = {{paddingRight: 5}}>
@@ -137,7 +128,7 @@ const Task_Create = () => {
                         </Typography>
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                             <DemoContainer components={['DesktopDatePicker']}>
-                                <DesktopDatePicker/>
+                                <DesktopDatePicker defaultValue={dayjs('05-01-2025')}/>
                             </DemoContainer>
                         </LocalizationProvider>
                     </Box>
@@ -147,8 +138,8 @@ const Task_Create = () => {
                         </Typography>
                         <List sx={{border: 1, borderRadius: '5px'}}>
                             <ListItem disablePadding>
-                                <ListItemButton onClick = {toSubtask}>
-                                    <ListItemText primary = '+ New Sub-Task'/>
+                                <ListItemButton>
+                                    <ListItemText primary = 'UNBOX THE FURNITURE'/>
                                 </ListItemButton>
                             </ListItem>
                         </List>
@@ -157,7 +148,13 @@ const Task_Create = () => {
                         <Typography variant = 'h3' sx = {{paddingRight: 5}}>
                             Details:
                         </Typography>
-                        <TextField  label="Name here..." variant="filled" size = 'medium' rows={8} multiline = {true} sx={{width: '30rem'}}/>
+                        <TextField variant="filled" size = 'medium' rows={8} multiline = {true} sx={{width: '30rem'}} defaultValue = "Don't break it"/>
+                    </Box>
+                    <Box sx = {boxStyle}>
+                        <Typography variant = 'h3' sx = {{paddingRight: 5}}>
+                            Progress:
+                        </Typography>
+                        <Slider defaultValue={50} aria-label="Default" valueLabelDisplay="auto" />
                     </Box>
                 </Box>
             </MediaQuery>
@@ -166,4 +163,4 @@ const Task_Create = () => {
     )
 }
 
-export default Task_Create;
+export default Task_Detail;

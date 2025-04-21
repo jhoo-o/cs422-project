@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import {AppBar, Box, List, ListItemText, ListItemButton, 
     Divider, Toolbar, IconButton, Icon, SvgIcon, ListItem, 
-    ListItemAvatar, Avatar, Stack, Typography, Fab} from "@mui/material";
-import {ArrowBack, Settings, Add} from '@mui/icons-material';
+    ListItemAvatar, Avatar, Stack, Typography, Fab, Popover, Button} from "@mui/material";
+import {ArrowBack, Settings, Add, Person} from '@mui/icons-material';
 import picture from './added_assets/circle.png';
 import { Calendar, momentLocalizer} from 'react-big-calendar';
 import moment from 'moment';
@@ -26,6 +26,19 @@ const Dashboard = () => {
 
     const navigate = useNavigate();
 
+    const [anchorEl, setAnchorEl] = React.useState(null);
+
+    const handleClick = (event) => {
+        setAnchorEl(event.currentTarget);
+    }
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    }
+
+    const open = Boolean(anchorEl);
+    const id = open ? 'simple-popover' : undefined;
+
     const toSettings = (event) => {
         event.preventDefault();
         navigate("/Settings");
@@ -33,8 +46,18 @@ const Dashboard = () => {
 
     const toTaskCreate = (event) => {
         event.preventDefault();
-        navigate('/Task_Create')
+        navigate('/Task_Create');
     }
+
+    const toSignin = (event) => {
+        event.preventDefault();
+        navigate('/Signin');
+    }
+
+    const toDetails = (event) => {
+        navigate('/Task_Detail');
+    }
+
     
     const [eventsData, setEventsData] = useState(events);
 
@@ -47,15 +70,29 @@ const Dashboard = () => {
                     <AppBar position="static">
                         <Toolbar sx={{justifyContent: 'space-between'}}>
                             <Box sx={{}}>
-                                <img src = {picture} height={32} width={32}></img>
-                                {/*change later to logo once we have it kind just meant 
-                                to make the center look center*/}
+                                <IconButton aria-label='person' size = 'large' onClick={handleClick}>
+                                    <Person sx={{width: '2.75vh', height: '2.75vh'}}/>
+                                </IconButton>
+                                <Popover id = {id} open = {open} anchorEl={anchorEl} onClose = {handleClose}
+                                anchorOrigin = {{vertical: 'bottom', horizontal: 'left'}}>
+                                    <Stack spacing = {1} divider ={<Divider variane = 'middle'/>} 
+                                    sx = {{width: 1, p: 1, alignContent: 'center'}}>
+                                        <Button variant = 'outlined' onClick = {toSignin} 
+                                            sx={{flexGrow: 1, color: 'white', backgroundColor: 'red', 
+                                                fontWeight: 'bold', p:1, width: 0.85 
+                                            }}
+                                            // button looks even, kinda fine, also how tf did i make a comment like this
+                                        >
+                                            Sign Out
+                                        </Button>
+                                    </Stack>
+                                </Popover>
                             </Box>
-                            <Box width='5vw' height = '4vh'>
+                            <Box width='3vh' height = '3vh'>
                                 <img src={streak} alt = 'streak' style ={{width: '100%', height:'100%', objectFit: 'contain'}}/>
                             </Box>
-                            <IconButton size = "large" onClick={toSettings} sx={{}}>
-                                <Settings />
+                            <IconButton size = "large" onClick={toSettings} >
+                                <Settings sx={{width: '2.75vh', height: '2.75vh'}}/>
                             </IconButton>
                         </Toolbar>
                     </AppBar>
@@ -72,7 +109,7 @@ const Dashboard = () => {
                         startAccessor="start"
                         endAccessor="end"
                         events = {eventsData}
-
+                        onSelectEvent = {(event) => toDetails(event)}
                     />
                 </Box>
                 {/* Stores user task list*/}
@@ -89,38 +126,7 @@ const Dashboard = () => {
                             <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
                                 <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
                                     <Typography variant='body2' sx = {{fontSize: '2.75vw'}}>
-                                        DO LAUNDRY
-                                    </Typography>
-                                    <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
-                                        <Typography variant = 'body2' sx = {{fontSize: '2vw', p:1.5}}>
-                                            4pts
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                                
-                                <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
-                                    <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vw'}} >
-                                        SEPERATE COLOR AND WHITES AND USE VINEGAR
-                                    </Typography>
-                                
-                                    <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vw'}}>
-                                    </Typography>
-                                    
-                                </Box>
-                            </Stack>
-                        </ListItem>
-                        <ListItem sx = {{borderColor:'#000000', border: '1px solid black', flexGrow: 1, height: '15vh'}}>
-                            {/* <ListItemAvatar>
-                                <Avatar alt ="Espurr" src = {picture}/>
-                            </ListItemAvatar> */}
-                            <Box width = '8vw' height = '8vh' >
-                                <img src = {one_day} alt = 'one_day' style = {{width: '100%', height:'100%', objectFit: 'contain'}}/>
-                            </Box>
-
-                            <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
-                                <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
-                                    <Typography variant='body2' sx = {{fontSize: '2.75vw'}}>
-                                        Pay rent
+                                        UNBOX FURNITURE
                                     </Typography>
                                     <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
                                         <Typography variant = 'body2' sx = {{fontSize: '2vw', p:1.5}}>
@@ -131,7 +137,38 @@ const Dashboard = () => {
                                 
                                 <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
                                     <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vw'}} >
-                                        Route to proper bank account this time
+                                        OPEN IT UP AND LEAVE IT ASIDE
+                                    </Typography>
+                                
+                                    <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vw'}}>
+                                    </Typography>
+                                    
+                                </Box>
+                            </Stack>
+                        </ListItem>
+                        <ListItem sx = {{borderColor:'#000000', border: '1px solid black', flexGrow: 1, height: '15vh'}} onClick = {toDetails}>
+                            {/* <ListItemAvatar>
+                                <Avatar alt ="Espurr" src = {picture}/>
+                            </ListItemAvatar> */}
+                            <Box width = '8vw' height = '8vh' >
+                                <img src = {one_day} alt = 'one_day' style = {{width: '100%', height:'100%', objectFit: 'contain'}}/>
+                            </Box>
+
+                            <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
+                                <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
+                                    <Typography variant='body2' sx = {{fontSize: '2.75vw'}}>
+                                        Build the Table
+                                    </Typography>
+                                    <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
+                                        <Typography variant = 'body2' sx = {{fontSize: '2vw', p:1.5}}>
+                                            4pts
+                                        </Typography>
+                                    </Box>
+                                </Box>
+                                
+                                <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
+                                    <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vw'}} >
+                                        Don't break it
                                     </Typography>
                                 
                                     <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vw'}}>
@@ -305,6 +342,7 @@ const Dashboard = () => {
                             startAccessor="start"
                             endAccessor="end"
                             events = {eventsData}
+                            onSelectEvent = {(event)=> toDetails(event)}
                         />
                     </Box>
                     {/* task list */}
@@ -318,35 +356,7 @@ const Dashboard = () => {
                                 <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
                                     <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
                                         <Typography variant='body2' sx = {{fontSize: '2.75vh'}}>
-                                            DO LAUNDRY
-                                        </Typography>
-                                        <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
-                                            <Typography variant = 'body2' sx = {{fontSize: '2vh', p:1.5}}>
-                                                4pts
-                                            </Typography>
-                                        </Box>
-                                    </Box>
-                                    
-                                    <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
-                                        <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vh'}} >
-                                            SEPERATE COLOR AND WHITES AND USE VINEGAR
-                                        </Typography>
-                                    
-                                        <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vh'}}>
-                                        </Typography>
-                                        
-                                    </Box>
-                                </Stack>
-                            </ListItem>
-                            <ListItem sx = {{borderColor:'#000000', border: '1px solid black', flexGrow: 1, height:'15vh'}}>
-                                <Box width = '8vw' height = '8vh' >
-                                    <img src = {one_day} alt = 'one_day' style = {{width: '100%', height:'100%', objectFit: 'contain'}}/>
-                                </Box>
-
-                                <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
-                                    <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
-                                        <Typography variant='body2' sx = {{fontSize: '2.75vh'}}>
-                                            Pay rent
+                                            UNBOX FURNITURE
                                         </Typography>
                                         <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
                                             <Typography variant = 'body2' sx = {{fontSize: '2vh', p:1.5}}>
@@ -357,7 +367,35 @@ const Dashboard = () => {
                                     
                                     <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
                                         <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vh'}} >
-                                            Route to proper banka account this time
+                                            OPEN IT UP AND LEAVE IT ASIDE
+                                        </Typography>
+                                    
+                                        <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vh'}}>
+                                        </Typography>
+                                        
+                                    </Box>
+                                </Stack>
+                            </ListItem>
+                            <ListItem sx = {{borderColor:'#000000', border: '1px solid black', flexGrow: 1, height:'15vh'}} onClick = {toDetails}>
+                                <Box width = '8vw' height = '8vh' >
+                                    <img src = {one_day} alt = 'one_day' style = {{width: '100%', height:'100%', objectFit: 'contain'}}/>
+                                </Box>
+
+                                <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
+                                    <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
+                                        <Typography variant='body2' sx = {{fontSize: '2.75vh'}}>
+                                            Build the Table
+                                        </Typography>
+                                        <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
+                                            <Typography variant = 'body2' sx = {{fontSize: '2vh', p:1.5}}>
+                                                4pts
+                                            </Typography>
+                                        </Box>
+                                    </Box>
+                                    
+                                    <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
+                                        <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vh'}} >
+                                            Don't break it
                                         </Typography>
                                     
                                         <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vh'}}>

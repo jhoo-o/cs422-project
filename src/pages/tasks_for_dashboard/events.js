@@ -10,14 +10,14 @@ export default [
   },
   {
     id: 1,
-    title: "DO LAUNDRY",
+    title: "UNBOX FURNITURE",
     allDay: true,
     start: new Date(2025, 3, 30),
     end: new Date (2025, 3, 30)
   },
   {
     id: 2,
-    title: "Pay rent",
+    title: "Build the Table",
     allDay: true,
     start: new Date(2025, 4, 1),
     end: new Date(2025, 4, 1)

@@ -6,7 +6,7 @@ const SettingsList = () => {
     
     return (
         <>
-            <SettingsBar previousDest={"/"}/>
+            <SettingsBar previousDest={"/dashboard"}/>
             <List sx={{backgroundColor: '#e8f1ff', width:'100%', flexGrow: 1}}>
                 {/*<SetNavigate text = {"Profile"} destination={"/Profile"}/>*/}
                 <SetNavigate text = {"Credit Card Information"} destination={"/CardSetup"}/>
