@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {AppBar, Box, Container, List, ListItemText, ListItemButton, Divider, Toolbar, 
     IconButton, Icon, SvgIcon, ListItem, ListItemAvatar, Avatar, Stack, Typography,
     FormGroup,
@@ -10,7 +11,7 @@ const SubmitTask = () => {
     const navigate = useNavigate();
     const handleClick = (event) => {
         event.preventDefault();
-        navigate("/")
+        navigate("/dashboard")
     }
 
     return (
@@ -31,7 +32,7 @@ const SubmitTask = () => {
                 <form>
                     <TextField fullWidth type='file' inputProps={{accept: "image/*, video/*"}} />
                     <Container sx={{alignContent:"center", display:"flex"}}>
-                        <Button variant="text" sx={{fontWeight:"bold", color:"white", backgroundColor: "#67f5a0", paddingRight: 7,
+                        <Button onClick={handleClick} variant="text" sx={{fontWeight:"bold", color:"white", backgroundColor: "#67f5a0", paddingRight: 7,
                             paddingLeft: 7, paddingTop: 1, paddingBottom:1, mt:3, flexGrow:1}}>Submit</Button>
                     </Container>
                 </form>

@@ -12,6 +12,7 @@ import Signup from './pages/signup';
 import Subtask_Create from './pages/subtask_create';
 import Task_Detail from './pages/task_detail';
 import SubmitTask from "./pages/submitTask";
+import Task_Made from './pages/task_made';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Route exact path = "/Task_Detail" element = {<Task_Detail/>}/>
         <Route exact path = "/Task-Create" element = {<Task_Create/>}/>
         <Route exact path = "/SubmitTask" element = {<SubmitTask/>}/>
+        <Route exact path = "/Task_Made" element = {<Task_Made/>}/>
       </Routes>
     </div>
   );

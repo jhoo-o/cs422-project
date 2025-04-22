@@ -2,8 +2,9 @@ import ConfirmBar from '../components/ConfirmTasksBar';
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
 import {Box, List, ListItemText, ListItemButton, 
-    Icon, ListItem, Typography, Popover, TextField} from "@mui/material";
-import {Help} from '@mui/icons-material';
+    Icon, ListItem, Typography, Popover, TextField,
+    AppBar, Toolbar, IconButton} from "@mui/material";
+import {Help, ArrowBack, Check} from '@mui/icons-material';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import NumberField from './numberField.tsx'
 import { DemoContainer} from '@mui/x-date-pickers/internals/demo';
@@ -19,6 +20,16 @@ const Subtask_Create = () => {
     const toSubtask = (event) => {
         event.preventDefault();
         navigate('/Create_Subtask');
+    }
+
+    const handleBack = (event) => {
+        event.preventDefault();
+        navigate(-1);
+    }
+
+    const handleNext = (event) => {
+        event.preventDefault();
+        navigate(-1, {state: {}});
     }
 
     const [anchorEl0, setAnchorEl0] = React.useState(null);
@@ -39,7 +50,23 @@ const Subtask_Create = () => {
         <div>
             {/* mobile / tablet */}
             <MediaQuery maxWidth={1080}>
-            <ConfirmBar previousDest={'/task_create'} TextLabel={'New Subtask'}/>
+            <Box sx={{flexGrow: 1, justifyContent: 'space-between'}} >
+                <AppBar position="static" >
+                    <Toolbar sx={{justifyContent: 'space-between'}}>
+                        <IconButton size="large" edge="start" onClick={handleBack} sx = {{marginLeft: 2}}>
+                            < ArrowBack />
+                        </IconButton>
+                        <div sx = {{flexGrow: 1}}>
+                            <Typography variant = 'h4'>
+                                New Subtask
+                            </Typography>
+                        </div>
+                        <IconButton edge = 'end' size = 'large' onClick={handleNext} sx = {{marginRight: 2, color: 'white'}}>
+                            <Check/>
+                        </IconButton>
+                    </Toolbar>
+                </AppBar>
+            </Box>
             <Box sx = {{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
                 <Box sx = {boxStyle}>
                     <Typography variant = 'h3' sx = {{paddingRight: 5}}>
@@ -137,18 +164,6 @@ const Subtask_Create = () => {
                                 <DesktopDatePicker/>
                             </DemoContainer>
                         </LocalizationProvider>
-                    </Box>
-                    <Box sx = {boxStyle}>
-                        <Typography variant = 'h3' sx = {{paddingRight: 5}}>
-                        Sub-tasks: 
-                        </Typography>
-                        <List sx={{border: 1, borderRadius: '5px'}}>
-                            <ListItem disablePadding>
-                                <ListItemButton onClick = {toSubtask}>
-                                    <ListItemText primary = '+ New Sub-Task'/>
-                                </ListItemButton>
-                            </ListItem>
-                        </List>
                     </Box>
                     <Box sx = {boxStyle}>
                         <Typography variant = 'h3' sx = {{paddingRight: 5}}>

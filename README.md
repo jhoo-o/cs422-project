@@ -9,7 +9,7 @@ REMOVE BELOW WHEN TURNING IN FINAL PROJECT OR WHENEVER WE TURN IT in
 
 FOR MY GROUPMMATES. PLEASE RUN NPM INSTALL ON FIRST RUN OF THIS PROJECT, AND THE NPM START.
 Also for my groupmmates also run 'npm install react-big-calendar', 'npm install --save react-responsive',
-'npm install @base-ui-components/react', 'npm install @mui/x-date-pickers@next' and 'npm install dayjs'
+'npm i @mui/base@5.0.0-beta.40-1', 'npm install @mui/x-date-pickers@next' and 'npm install dayjs'
 
 # Getting Started with Create React App
 

@@ -8,7 +8,7 @@ import picture from './added_assets/circle.png';
 import { Calendar, momentLocalizer} from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-import events from "./tasks_for_dashboard/events";
+import events from "./user_data/events";
 import today from "./added_assets/today_diamond.png";
 import one_day from "./added_assets/1_day_diamond.png";
 import two_day from "./added_assets/2_day_diamond.png";
@@ -259,11 +259,11 @@ const Dashboard = () => {
                                 </Box>
                                 
                                 <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
-                                    <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vh'}} >
+                                    <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vw'}} >
                                         Create tileset for basic environment for game, see reference photos
                                     </Typography>
                                 
-                                    <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vh'}}>
+                                    <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vw'}}>
                                     </Typography>
                                     
                                 </Box>

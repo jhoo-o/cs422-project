@@ -15,7 +15,7 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import MediaQuery from 'react-responsive';
 
 
-const Task_Detail = () => {
+const Task_Detail = (taskId) => {
     const id = React.useId();
     const navigate = useNavigate();
 
