@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import {AppBar, Box, Container, List, ListItemText, ListItemButton, Divider, Toolbar, 
     IconButton, Icon, SvgIcon, ListItem, ListItemAvatar, Avatar, Stack, Typography,
     FormGroup,
@@ -6,20 +7,36 @@ import {AppBar, Box, Container, List, ListItemText, ListItemButton, Divider, Too
     Button} from "@mui/material";
 import {ArrowBack, Settings} from '@mui/icons-material';
 import { useNavigate } from "react-router-dom";
+import process from './jsonProcesser';
 
 const SubmitTask = () => {
     const navigate = useNavigate();
-    const handleClick = (event) => {
+    const handleBack = (event) => {
         event.preventDefault();
+        navigate("/task_details", { state: {
+            name: state.name,
+            points: state.points,
+            priority: state.priority,
+            date: state.date,
+            details: state.details,
+            bounty: state.bounty
+        }})
+    }
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        processer.deleteTaskEvent(state);
         navigate("/dashboard")
     }
+
+    const processer = new process();
+    const { state } = useLocation();
 
     return (
         <>
             <Box sx={{flexGrow: 1}}>
                 <AppBar position="static">
                     <Toolbar>
-                        <IconButton size="large" edge="start" onClick={handleClick}>
+                        <IconButton size="large" edge="start" onClick={handleBack}>
                             < ArrowBack />
                         </IconButton>
                         <Container sx={{width:"100%"}}>
@@ -32,7 +49,7 @@ const SubmitTask = () => {
                 <form>
                     <TextField fullWidth type='file' inputProps={{accept: "image/*, video/*"}} />
                     <Container sx={{alignContent:"center", display:"flex"}}>
-                        <Button onClick={handleClick} variant="text" sx={{fontWeight:"bold", color:"white", backgroundColor: "#67f5a0", paddingRight: 7,
+                        <Button onClick={handleSubmit} variant="text" sx={{fontWeight:"bold", color:"white", backgroundColor: "#67f5a0", paddingRight: 7,
                             paddingLeft: 7, paddingTop: 1, paddingBottom:1, mt:3, flexGrow:1}}>Submit</Button>
                     </Container>
                 </form>

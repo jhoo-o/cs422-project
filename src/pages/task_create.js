@@ -25,12 +25,7 @@ import dayjs from 'dayjs';
 
 
 const Task_Create = () => {
-    const id = React.useId();
     const navigate = useNavigate();
-    const toSubtask = (event) => {
-        event.preventDefault();
-        navigate('/Subtask_Create');
-    }
 
     const handleBack = (event) => {
         event.preventDefault();
@@ -43,8 +38,8 @@ const Task_Create = () => {
                                     name: inputValueName,
                                     points: inputValuePoints,
                                     priority: inputValuePriority,
-                                    date: inputValueDate,
-                                    detail: inputValueDetail
+                                    date: inputValueDate.toDate(),
+                                    details: inputValueDetail
                                 }});
     }
     

@@ -4,6 +4,8 @@ import {AppBar, Box, List, ListItemText, ListItemButton, Divider, Toolbar, IconB
 } from "@mui/material";
 import { tasks } from './user_data/tasks.jsx';
 import * as data from './user_data/tasks.jsx';
+import process from './jsonProcesser';
+
 
 const TaskMade = () => {
 
@@ -11,17 +13,47 @@ const TaskMade = () => {
 
     const toAddBounty = (event) => {
         event.preventDefault(); // add check for if they have credit card
-        navigate("/addBounty");
+        
+        
+        
+        if (processer.getCredit == 'no'){
+            navigate("/enter_credit", { state: {
+                name: state.name,
+                points: state.points,
+                priority: state.priority,
+                date: state.date,
+                details: state.details
+            }})
+        }else{
+            navigate("/Add_Bounty", {state: {
+                name: state.name,
+                points: state.points,
+                priority: state.priority,
+                date: state.date,
+                details: state.details
+            }});
+        }
+        
     }
     const toDashboard = (event) => {
         event.preventDefault();
+        const obj = state;
+        obj.bounty = 0;
         
+        processer.setTasks = obj;
+        const eventObj = {
+            title: obj.name,
+            allDay: true,
+            start: obj.date,
+            end: obj.date
+        }
+        processer.setEvents = eventObj;
+        console.log(obj);
         navigate('/dashboard');
     }
 
     const {state} = useLocation();
-
-
+    const processer = new process();
 
     return (
         <Container sx={{height:"40%", width:"50%", backgroundColor:'#e8f1ff', mt:15,
@@ -36,7 +68,7 @@ const TaskMade = () => {
                 {/* i don't wanna make boxes, stolen from matt */}
                 <Box sx={{display:'flex', alignItems:'center', justifyContent:'center', paddingTop:'10vh'}}>
                     <ButtonGroup variant='contained' size = 'large' fullWidth='true' sx = {{width: '20rem', height: '10rem'}}> 
-                        <Button sx={{width:'50%', height:'100%', fontSize: '3rem'}}>Yes</Button>
+                        <Button sx={{width:'50%', height:'100%', fontSize: '3rem'}} onClick={toAddBounty}>Yes</Button>
                         <Button sx={{width:'50%', height:'100%', fontSize: '3rem'}} onClick={toDashboard}>No</Button>
                     </ButtonGroup>
                 </Box>

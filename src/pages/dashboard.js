@@ -18,13 +18,21 @@ import five_day from "./added_assets/5_day_diamond.png";
 import MediaQuery from 'react-responsive';
 import WhatshotIcon from '@mui/icons-material/Whatshot';
 import streak from "./added_assets/streak.png";
-
+import process from './jsonProcesser';
+import redDia from './added_assets/red_diamond.png';
+import TaskList from '../components/taskList.jsx';
 
 const localizer = momentLocalizer(moment)
 
 const Dashboard = () => {
 
     const navigate = useNavigate();
+    const processer = new process();
+    const taskArray = processer.getTasks;
+    const eventArray = processer.getEvents;
+
+    console.log(taskArray);
+
 
     const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -35,6 +43,26 @@ const Dashboard = () => {
     const handleClose = () => {
         setAnchorEl(null);
     }
+
+    const TaskListing = (display) =>{
+        const tasks = taskArray.map(task => <TaskList task={task} display = {display.display}/>);
+
+        if (display.display=='desktop'){
+            return (
+                <List sx = {{flexGrow: 1, background: '#F8F9FA', overflowY: 'scroll', maxHeight: '90vh', overflow: 'auto', width: '50vw'}}>
+                    {tasks}
+                </List>
+            )
+        }else{
+            return (
+                <List sx ={{flexGrow: 1, background: '#F8F9FA', overflowY: 'scroll', maxHeight: '44vh', overflow: 'auto'}}>
+                    {tasks}
+                </List>
+            )
+        }
+        
+    }
+
 
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popover' : undefined;
@@ -108,200 +136,12 @@ const Dashboard = () => {
                         style = {{height:'50vh', width : '100vw'}}
                         startAccessor="start"
                         endAccessor="end"
-                        events = {eventsData}
-                        onSelectEvent = {(event) => toDetails(event)}
+                        events = {eventArray}
                     />
                 </Box>
                 {/* Stores user task list*/}
                 <Box sx={{flexGrow: 1, width: 1, height: 'auto'}}>
-                    <List sx ={{flexGrow: 1, background: '#F8F9FA', overflowY: 'scroll', maxHeight: '44vh', overflow: 'auto'}}>
-                        <ListItem sx = {{borderColor:'#000000', border: '1px solid black', flexGrow: 1, height:'15vh'}}>
-                            {/* <ListItemAvatar>
-                                <Avatar alt ="Espurr" src = {picture}/>
-                            </ListItemAvatar> */}
-                            <Box width = '8vw' height = '8vh' >
-                                <img src = {today} alt = 'today' style = {{width: '100%', height:'100%', objectFit: 'contain'}}/>
-                            </Box>
-
-                            <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
-                                <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
-                                    <Typography variant='body2' sx = {{fontSize: '2.75vw'}}>
-                                        UNBOX FURNITURE
-                                    </Typography>
-                                    <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
-                                        <Typography variant = 'body2' sx = {{fontSize: '2vw', p:1.5}}>
-                                            1pt
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                                
-                                <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
-                                    <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vw'}} >
-                                        OPEN IT UP AND LEAVE IT ASIDE
-                                    </Typography>
-                                
-                                    <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vw'}}>
-                                    </Typography>
-                                    
-                                </Box>
-                            </Stack>
-                        </ListItem>
-                        <ListItem sx = {{borderColor:'#000000', border: '1px solid black', flexGrow: 1, height: '15vh'}} onClick = {toDetails}>
-                            {/* <ListItemAvatar>
-                                <Avatar alt ="Espurr" src = {picture}/>
-                            </ListItemAvatar> */}
-                            <Box width = '8vw' height = '8vh' >
-                                <img src = {one_day} alt = 'one_day' style = {{width: '100%', height:'100%', objectFit: 'contain'}}/>
-                            </Box>
-
-                            <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
-                                <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
-                                    <Typography variant='body2' sx = {{fontSize: '2.75vw'}}>
-                                        Build the Table
-                                    </Typography>
-                                    <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
-                                        <Typography variant = 'body2' sx = {{fontSize: '2vw', p:1.5}}>
-                                            4pts
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                                
-                                <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
-                                    <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vw'}} >
-                                        Don't break it
-                                    </Typography>
-                                
-                                    <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vw'}}>
-                                        $4.00
-                                    </Typography>
-                                    
-                                </Box>
-                            </Stack>
-                        </ListItem>
-                        <ListItem sx = {{borderColor:'#000000', border: '1px solid black', flexGrow: 1, height: '15vh'}}>
-                            <Box width = '8vw' height = '8vh' >
-                                <img src = {one_day} alt = 'one_day' style = {{width: '100%', height:'100%', objectFit: 'contain'}}/>
-                            </Box>
-
-                            <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
-                                <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
-                                    <Typography variant='body2' sx = {{fontSize: '2.75vw'}}>
-                                        Finish Math 330 Hw
-                                    </Typography>
-                                    <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
-                                        <Typography variant = 'body2' sx = {{fontSize: '2vw', p:1.5}}>
-                                            5pts
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                                
-                                <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
-                                    <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vw'}} >
-                                        1, 4, 5a, 5b, 7, Pg. 301, Isomorphism and rings
-                                    </Typography>
-                                
-                                    <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vw'}}>
-                                    </Typography>
-                                    
-                                </Box>
-                            </Stack>
-                        </ListItem>
-                        <ListItem sx = {{borderColor:'#000000', border: '1px solid black', flexGrow: 1, height: '15vh'}}>
-                            {/* <ListItemAvatar>
-                                <Avatar alt ="Espurr" src = {picture}/>
-                            </ListItemAvatar> */}
-                            <Box width = '8vw' height = '8vh' >
-                                <img src = {two_day} alt = 'two_day' style = {{width: '100%', height:'100%', objectFit: 'contain'}}/>
-                            </Box>
-
-                            <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
-                                <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
-                                    <Typography variant='body2' sx = {{fontSize: '2.75vw'}}>
-                                        Audio Recording
-                                    </Typography>
-                                    <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
-                                        <Typography variant = 'body2' sx = {{fontSize: '2vw', p:1.5}}>
-                                            6pts
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                                
-                                <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
-                                    <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vw'}} >
-                                        Record lines from script and send to Manager
-                                    </Typography>
-                                
-                                    <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vw'}}>
-                                        $6.00
-                                    </Typography>
-                                    
-                                </Box>
-                            </Stack>
-                        </ListItem>
-                        <ListItem sx = {{borderColor:'#000000', border: '1px solid black', flexGrow: 1, height: '15vh'}}>
-                            {/* <ListItemAvatar>
-                                <Avatar alt ="Espurr" src = {picture}/>
-                            </ListItemAvatar> */}
-                            <Box width = '8vw' height = '8vh' >
-                                <img src = {three_day} alt = 'three_day' style = {{width: '100%', height:'100%', objectFit: 'contain'}}/>
-                            </Box>
-
-                            <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
-                                <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
-                                    <Typography variant='body2' sx = {{fontSize: '2.75vw'}}>
-                                        Create Graphic for Game
-                                    </Typography>
-                                    <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
-                                        <Typography variant = 'body2' sx = {{fontSize: '2vw', p:1.5}}>
-                                            10pts
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                                
-                                <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
-                                    <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vw'}} >
-                                        Create tileset for basic environment for game, see reference photos
-                                    </Typography>
-                                
-                                    <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vw'}}>
-                                    </Typography>
-                                    
-                                </Box>
-                            </Stack>
-                        </ListItem>
-                        <ListItem sx = {{borderColor:'#000000', border: '1px solid black', flexGrow: 1, height: '15vh'}}>
-                            {/* <ListItemAvatar>
-                                <Avatar alt ="Espurr" src = {picture}/>
-                            </ListItemAvatar> */}
-                            <Box width = '8vw' height = '8vh' >
-                                <img src = {five_day} alt = 'five_day' style = {{width: '100%', height:'100%', objectFit: 'contain'}}/>
-                            </Box>
-
-                            <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
-                                <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
-                                    <Typography variant='body2' sx = {{fontSize: '2.75vw'}}>
-                                        Do the thing
-                                    </Typography>
-                                    <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
-                                        <Typography variant = 'body2' sx = {{fontSize: '2vw', p:1.5}}>
-                                            2pts
-                                        </Typography>
-                                    </Box>
-                                </Box>
-                                
-                                <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
-                                    <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vw'}} >
-                                        It's the thing mentioned before
-                                    </Typography>
-                                
-                                    <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vw'}}>
-                                        $100.00
-                                    </Typography>
-                                    
-                                </Box>
-                            </Stack>
-                        </ListItem>
-                    </List>
+                    <TaskListing processObj = {processer} display = 'mobile'/>
                 </Box>
                 <Fab color = 'primary' aria-label='add' onClick={toTaskCreate}
                 style ={{position: 'fixed', right: '5vw', top: '80vh', height: '12vh', width: '12vh'}}>
@@ -311,7 +151,7 @@ const Dashboard = () => {
                     
                 </Fab>
             </MediaQuery>
-            <MediaQuery minWidth={1201}>
+            <MediaQuery minWidth={1082}>
                 <Box sx={{flexGrow: 1, height: '8vh'}}>
                     <AppBar position="static" height='4vh'>
                         <Toolbar sx={{justifyContent: 'space-between'}}>
@@ -342,187 +182,12 @@ const Dashboard = () => {
                             startAccessor="start"
                             endAccessor="end"
                             events = {eventsData}
-                            onSelectEvent = {(event)=> toDetails(event)}
                         />
                     </Box>
                     {/* task list */}
                     <Box sx={{flexGrow:1, width:1, width: 'auto'}}>
                         <List sx = {{flexGrow: 1, background: '#F8F9FA', overflowY: 'scroll', maxHeight: '90vh', overflow: 'auto', width: '50vw'}}>
-                            <ListItem sx = {{borderColor:'#000000', border: '1px solid black', flexGrow: 1, height:'15vh'}}>
-                                <Box width = '8vw' height = '8vh' >
-                                    <img src = {today} alt = 'today' style = {{width: '100%', height:'100%', objectFit: 'contain'}}/>
-                                </Box>
-
-                                <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
-                                    <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
-                                        <Typography variant='body2' sx = {{fontSize: '2.75vh'}}>
-                                            UNBOX FURNITURE
-                                        </Typography>
-                                        <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
-                                            <Typography variant = 'body2' sx = {{fontSize: '2vh', p:1.5}}>
-                                                1pt
-                                            </Typography>
-                                        </Box>
-                                    </Box>
-                                    
-                                    <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
-                                        <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vh'}} >
-                                            OPEN IT UP AND LEAVE IT ASIDE
-                                        </Typography>
-                                    
-                                        <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vh'}}>
-                                        </Typography>
-                                        
-                                    </Box>
-                                </Stack>
-                            </ListItem>
-                            <ListItem sx = {{borderColor:'#000000', border: '1px solid black', flexGrow: 1, height:'15vh'}} onClick = {toDetails}>
-                                <Box width = '8vw' height = '8vh' >
-                                    <img src = {one_day} alt = 'one_day' style = {{width: '100%', height:'100%', objectFit: 'contain'}}/>
-                                </Box>
-
-                                <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
-                                    <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
-                                        <Typography variant='body2' sx = {{fontSize: '2.75vh'}}>
-                                            Build the Table
-                                        </Typography>
-                                        <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
-                                            <Typography variant = 'body2' sx = {{fontSize: '2vh', p:1.5}}>
-                                                4pts
-                                            </Typography>
-                                        </Box>
-                                    </Box>
-                                    
-                                    <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
-                                        <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vh'}} >
-                                            Don't break it
-                                        </Typography>
-                                    
-                                        <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vh'}}>
-                                            $4.00
-                                        </Typography>
-                                        
-                                    </Box>
-                                </Stack>
-                            </ListItem>
-                            <ListItem sx = {{borderColor:'#000000', border: '1px solid black', flexGrow: 1, height:'15vh'}}>
-                                <Box width = '8vw' height = '8vh' >
-                                    <img src = {one_day} alt = 'one_day' style = {{width: '100%', height:'100%', objectFit: 'contain'}}/>
-                                </Box>
-
-                                <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
-                                    <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
-                                        <Typography variant='body2' sx = {{fontSize: '2.75vh'}}>
-                                            Finish Math 330 Hw
-                                        </Typography>
-                                        <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
-                                            <Typography variant = 'body2' sx = {{fontSize: '2vh', p:1.5}}>
-                                                5pts
-                                            </Typography>
-                                        </Box>
-                                    </Box>
-                                    
-                                    <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
-                                        <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vh'}} >
-                                            1, 4, 5a, 5b, 7, Pg. 301, Isomorphism and rings
-                                        </Typography>
-                                    
-                                        <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vh'}}>
-                                        </Typography>
-                                        
-                                    </Box>
-                                </Stack>
-                            </ListItem>
-                            <ListItem sx = {{borderColor:'#000000', border: '1px solid black', flexGrow: 1, height:'15vh'}}>
-                                {/* <ListItemAvatar>
-                                    <Avatar alt ="Espurr" src = {picture}/>
-                                </ListItemAvatar> */}
-                                <Box width = '8vw' height = '8vh' >
-                                    <img src = {two_day} alt = 'two_day' style = {{width: '100%', height:'100%', objectFit: 'contain'}}/>
-                                </Box>
-
-                                <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
-                                    <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
-                                        <Typography variant='body2' sx = {{fontSize: '2.75vh'}}>
-                                            Audio Recording
-                                        </Typography>
-                                        <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
-                                            <Typography variant = 'body2' sx = {{fontSize: '2vh', p:1.5}}>
-                                                6pts
-                                            </Typography>
-                                        </Box>
-                                    </Box>
-                                    
-                                    <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
-                                        <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vh'}} >
-                                            Record lines from script and send to Manager
-                                        </Typography>
-                                    
-                                        <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vh'}}>
-                                            $6.00
-                                        </Typography>
-                                        
-                                    </Box>
-                                </Stack>
-                            </ListItem>
-                            <ListItem sx = {{borderColor:'#000000', border: '1px solid black', flexGrow: 1, height:'15vh'}}>
-                                <Box width = '8vw' height = '8vh' >
-                                    <img src = {three_day} alt = 'three_day' style = {{width: '100%', height:'100%', objectFit: 'contain'}}/>
-                                </Box>
-
-                                <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
-                                    <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
-                                        <Typography variant='body2' sx = {{fontSize: '2.75vh'}}>
-                                            Create Graphic for Game
-                                        </Typography>
-                                        <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
-                                            <Typography variant = 'body2' sx = {{fontSize: '2vh', p:1.5}}>
-                                                10pts
-                                            </Typography>
-                                        </Box>
-                                    </Box>
-                                    
-                                    <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
-                                        <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vh'}} >
-                                            Create tileset for basic environment for game, see reference photos
-                                        </Typography>
-                                    
-                                        <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vh'}}>
-                                        </Typography>
-                                        
-                                    </Box>
-                                </Stack>
-                            </ListItem>
-                            <ListItem sx = {{borderColor:'#000000', border: '1px solid black', flexGrow: 1, height:'15vh'}}>
-                                <Box width = '8vw' height = '8vh' >
-                                    <img src = {five_day} alt = 'five_day' style = {{width: '100%', height:'100%', objectFit: 'contain'}}/>
-                                </Box>
-
-                                <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
-                                    <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
-                                        <Typography variant='body2' sx = {{fontSize: '2.75vh'}}>
-                                            Do the thing
-                                        </Typography>
-                                        <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
-                                            <Typography variant = 'body2' sx = {{fontSize: '2vh', p:1.5}}>
-                                                2pts
-                                            </Typography>
-                                        </Box>
-                                    </Box>
-                                    
-                                    <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
-                                        <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vh'}} >
-                                            It's the thing mentioned before
-                                        </Typography>
-                                    
-                                        <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vh'}}>
-                                            $100.00
-                                        </Typography>
-                                        
-                                    </Box>
-                                </Stack>
-                            </ListItem>
-                            
+                            <TaskListing processObj = {processer} display = 'desktop'/>
                         </List>
                     </Box>
                 </Stack>
