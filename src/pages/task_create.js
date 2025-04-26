@@ -26,24 +26,27 @@ import dayjs from 'dayjs';
 
 const Task_Create = () => {
     const navigate = useNavigate();
-
+    const [errorName, setErrorName] = useState(false);
     const handleBack = (event) => {
         event.preventDefault();
         navigate('/dashboard');
     }
-
     const handleNext = (event) => {
         event.preventDefault();
-        navigate('/task_made', {state: {
-                                    name: inputValueName,
-                                    points: inputValuePoints,
-                                    priority: inputValuePriority,
-                                    date: inputValueDate.toDate(),
-                                    details: inputValueDetail
-                                }});
-    }
+        if (inputValueName.trim() === '') {
+            setErrorName(true);
+        } else {
+            setErrorName(false);
+            navigate('/task_made', { state: {
+                name: inputValueName,
+                points: inputValuePoints,
+                priority: inputValuePriority,
+                date: inputValueDate.toDate(),
+                details: inputValueDetail
+            }});
+        }
+    }    
     
-
     const [anchorEl0, setAnchorEl0] = React.useState(null);
 
     const handlePopoverHoverOpen = (event) => {
@@ -89,7 +92,8 @@ const Task_Create = () => {
                     <Typography variant = 'h3' sx = {{paddingRight: 5}}>
                         Task Name:
                     </Typography>
-                    <TextField  label="Name here..." variant="filled" value = {inputValueName} onChange={(e) => setInputValueName(e.target.value)}/>
+                    <TextField  label="Name here..." variant="filled" value = {inputValueName} onChange={(e) => setInputValueName(e.target.value)} error={errorName && inputValueName.trim() === ''}
+    helperText={errorName && inputValueName.trim() === '' ? "Task name is required" : ''}/>
                 </Box>
                 <Box sx = {boxStyle}>
                     <Typography variant = 'h3' sx = {{paddingRight: 5}}>
@@ -159,7 +163,8 @@ const Task_Create = () => {
                             Task Name:
                         </Typography>
                         <TextField  label="Name here..." variant="filled" value = {inputValueName}
-                            onChange={(e)=>setInputValueName(e.target.value)}/>
+                            onChange={(e)=>setInputValueName(e.target.value)} error={errorName && inputValueName.trim() === ''}
+                            helperText={errorName && inputValueName.trim() === '' ? "Task name is required" : ''}/>
                     </Box>
                     <Box sx = {boxStyle}>
                         <Typography variant = 'h3' sx = {{paddingRight: 5}}>
@@ -199,7 +204,7 @@ const Task_Create = () => {
                         </Typography>
                         <TextField  label="Name here..." variant="filled" size = 'medium' rows={8} 
                         multiline = {true} sx={{width: '30rem'}} value = {inputValueDetail}
-                        onChange={(e) => setInputValueDetail(e.target.value)}/>
+                        onChange={(e) => setInputValueDetail(e.target.value)} />
                     </Box>
                 </Box>
             </MediaQuery>
