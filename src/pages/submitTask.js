@@ -13,7 +13,7 @@ const SubmitTask = () => {
     const navigate = useNavigate();
     const handleBack = (event) => {
         event.preventDefault();
-        navigate("/task_details", { state: {
+        navigate("/task_detail", { state: {
             name: state.name,
             points: state.points,
             priority: state.priority,
