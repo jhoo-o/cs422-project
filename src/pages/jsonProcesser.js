@@ -30,8 +30,8 @@ class process{
                       end: new Date(event.end),
                       allDay: true  
                     }
-        obj.start.setDate(obj.start.getDate()+1); // fix later
-        obj.end.setDate(obj.end.getDate()+1);
+        obj.start.setDate(obj.start.getDate()); // fix later
+        obj.end.setDate(obj.end.getDate());
         return obj;
     }
 

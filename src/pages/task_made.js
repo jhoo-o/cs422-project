@@ -2,8 +2,6 @@ import {useNavigate, useLocation} from "react-router-dom";
 import {AppBar, Box, List, ListItemText, ListItemButton, Divider, Toolbar, IconButton, Container
     , Typography, Stack, TextField, Button, Link, ButtonGroup
 } from "@mui/material";
-import { tasks } from './user_data/tasks.jsx';
-import * as data from './user_data/tasks.jsx';
 import process from './jsonProcesser';
 
 

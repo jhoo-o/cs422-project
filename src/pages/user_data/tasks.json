@@ -3,7 +3,7 @@
         "name": "UNBOX FURNITURE",
         "points": 1,
         "priority": 2,
-        "date": "2025-05-01",
+        "date": "2025-04-30T12:00:00Z",
         "details": "OPEN IT UP AND LEAVE IT ASIDE", 
         "bounty": 0.00
     },
@@ -11,7 +11,7 @@
         "name": "Build the Table",
         "points": 4,
         "priority": 2,
-        "date": "2025-05-02",
+        "date": "2025-05-01T12:00:00Z",
         "details": "Don't break it",
         "bounty": 4.00
     },
@@ -19,7 +19,7 @@
         "name": "Finish Math 330 Hw",
         "points": 5,
         "priority": 1,
-        "date": "2025-05-02",
+        "date": "2025-05-01T12:00:00Z",
         "details": "1, 4, 5a, 5b, 7, Pg. 301, Isomorphism and rings",
         "bounty": 0.00
     },
@@ -27,7 +27,7 @@
         "name": "Audio Recording",
         "points": 6,
         "priority": 0,
-        "date": "2025-05-03",
+        "date": "2025-05-02T12:00:00Z",
         "details": "Record lines from script and send to",
         "bounty": 6.00
     },
@@ -35,7 +35,7 @@
         "name": "Create Graphic for Game",
         "points": 10,
         "priority": 1,
-        "date": "2025-05-04",
+        "date": "2025-05-03T12:00:00Z",
         "details": "Create tileset for basic environment for game, see reference photos",
         "bounty": 0.00
     },
@@ -43,7 +43,7 @@
         "name": "Do the thing",
         "points": 2,
         "priority": 3,
-        "date": "2025-05-05",
+        "date": "2025-05-04T12:00:00Z",
         "details": "It's the thing mentioned before",
         "bounty": 100.00
     }
