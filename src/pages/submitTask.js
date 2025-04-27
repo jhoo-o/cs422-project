@@ -22,9 +22,11 @@ const SubmitTask = () => {
     }
     const handleSubmit = (event) => {
         event.preventDefault();
-        processer.deleteTaskEvent(state);
-        navigate("/dashboard")
+        processer.deleteTaskEvent(state); 
+        processer.deleteEventByTitle(state.name);
+        navigate("/dashboard");
     }
+    
 
     const processer = new process();
     const { state } = useLocation();
