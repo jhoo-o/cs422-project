@@ -1,8 +1,6 @@
 import {useNavigate} from "react-router-dom";
-import {AppBar, Box, List, ListItemText, ListItemButton, Divider, Toolbar, IconButton, Container
-    , Typography, Stack, TextField, Button, Link
+import {Container, Typography, Stack, TextField, Button, 
 } from "@mui/material";
-import {ArrowBack, Settings} from '@mui/icons-material';
 
 
 const Signup = () => {

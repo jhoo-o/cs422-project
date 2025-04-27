@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
-import {AppBar, Box, List, ListItemText, ListItemButton, 
-    Divider, Toolbar, IconButton, Icon, SvgIcon, ListItem, 
-    ListItemAvatar, Avatar, Stack, Typography, Fab, Popover, Button} from "@mui/material";
-import {ArrowBack, Settings, Add, Person} from '@mui/icons-material';
+import {AppBar, Box, List, 
+    Divider, Toolbar, IconButton, SvgIcon, Stack, 
+    Fab, Popover, Button} from "@mui/material";
+import {Settings, Add, Person} from '@mui/icons-material';
 import picture from './added_assets/circle.png';
 import { Calendar, momentLocalizer} from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import events from "./user_data/events";
-import today from "./added_assets/today_diamond.png";
-import one_day from "./added_assets/1_day_diamond.png";
-import two_day from "./added_assets/2_day_diamond.png";
-import three_day from "./added_assets/3_day_diamond.png";
-import four_day from "./added_assets/4_day_diamond.png";
-import five_day from "./added_assets/5_day_diamond.png";
 import MediaQuery from 'react-responsive';
-import WhatshotIcon from '@mui/icons-material/Whatshot';
 import streak from "./added_assets/streak.png";
 import process from './jsonProcesser';
-import redDia from './added_assets/red_diamond.png';
 import TaskList from '../components/taskList.jsx';
 
 const localizer = momentLocalizer(moment)

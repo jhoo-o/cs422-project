@@ -1,6 +1,6 @@
 import {useNavigate, useLocation} from "react-router-dom";
-import {AppBar, Box, List, ListItemText, ListItemButton, Divider, Toolbar, IconButton, Container
-    , Typography, Stack, TextField, Button, Link, ButtonGroup
+import {Box, Container
+    , Typography,Button, ButtonGroup
 } from "@mui/material";
 import process from './jsonProcesser';
 

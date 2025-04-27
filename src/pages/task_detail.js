@@ -1,12 +1,10 @@
 import ConfirmBar from '../components/ConfirmTasksBar';
 import React, { useState } from 'react';
 import {useNavigate, useLocation} from "react-router-dom";
-import {Box, List, ListItemText, ListItemButton, 
-    Icon, ListItem, Typography, Popover, TextField,
-    AppBar, Toolbar, IconButton, Input, SvgIcon, Fab} from "@mui/material";
+import {Box, Icon, Typography, Popover, TextField,
+    AppBar, Toolbar, IconButton, SvgIcon, Fab} from "@mui/material";
 import {
     Unstable_NumberInput as BaseNumberInput,
-    NumberInputProps,
 } from '@mui/base/Unstable_NumberInput';
 
 import {Help, Check, ArrowBack} from '@mui/icons-material';
@@ -16,7 +14,7 @@ import Save from '@mui/icons-material/Save';
 import { styled } from '@mui/system';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 // import NumberField from './numberField.tsx';
-import { DemoContainer, DemoItem } from '@mui/x-date-pickers/internals/demo';
+import { DemoContainer} from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { MobileDatePicker } from '@mui/x-date-pickers/MobileDatePicker';

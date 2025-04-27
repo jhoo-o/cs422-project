@@ -1,12 +1,10 @@
 import ConfirmBar from '../components/ConfirmTasksBar';
 import React, { useState } from 'react';
 import {useNavigate} from "react-router-dom";
-import {Box, List, ListItemText, ListItemButton, 
-    Icon, ListItem, Typography, Popover, TextField,
-    AppBar, Toolbar, IconButton, Input} from "@mui/material";
+import {Box, Icon, Typography, Popover, TextField,
+    AppBar, Toolbar, IconButton} from "@mui/material";
 import {
     Unstable_NumberInput as BaseNumberInput,
-    NumberInputProps,
 } from '@mui/base/Unstable_NumberInput';
 
 import {Help, Check, ArrowBack} from '@mui/icons-material';
