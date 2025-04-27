@@ -23,9 +23,6 @@ const Dashboard = () => {
     const taskArray = processer.getTasks;
     const eventArray = processer.getEvents;
 
-    console.log(taskArray);
-
-
     const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
@@ -74,8 +71,25 @@ const Dashboard = () => {
         navigate('/Signin');
     }
 
-    const toDetails = (event) => {
-        navigate('/Task_Detail');
+    const toTaskDetail = (event) => {
+        console.log(taskArray)
+        const index = taskArray.findIndex(task => task.name == event.title)
+        var foundTask = null;
+        if (index != -1){
+            foundTask = taskArray[index];
+        } else {
+            foundTask = null
+            console.log(event);
+        }
+
+        navigate("/Task_Detail", {state: {
+            name: foundTask.name,
+            points: foundTask.points,
+            priority: foundTask.priority,
+            date: foundTask.date,
+            details: foundTask.details,
+            bounty: foundTask.bounty
+        }})
     }
 
     
@@ -129,6 +143,7 @@ const Dashboard = () => {
                         startAccessor="start"
                         endAccessor="end"
                         events = {eventArray}
+                        onSelectEvent = {(event) => toTaskDetail(event)}
                     />
                 </Box>
                 {/* Stores user task list*/}

@@ -98,14 +98,16 @@ class process{
 
     deleteTaskEvent(deleteTask){
         const index = this.tasks.findIndex(task => task.name == deleteTask.name)
-        console.log(index)
+        const eventIndex = this.events.findIndex(task => task.name == deleteTask.name)
         if (index != -1){
             this.tasks.splice(index, 1);
+            this.events.splice(index, 1);
         } else {
             console.log('DELETE FAILED');
         }
         this.tasks.sort((a, b) => a.date > b.date ? 1 : -1)
         localStorage.setItem('tasks', JSON.stringify(this.tasks))
+        localStorage.setItem('events', JSON.stringify(this.events))
     }
 
 }
