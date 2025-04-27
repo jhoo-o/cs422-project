@@ -7,6 +7,17 @@ import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import events from "./user_data/events";
 import picture from './added_assets/circle.png';
+import {useNavigate} from "react-router-dom";
+import {AppBar, Box, List, 
+    Divider, Toolbar, IconButton, SvgIcon, Stack, 
+    Fab, Popover, Button} from "@mui/material";
+import {Settings, Add, Person} from '@mui/icons-material';
+import picture from './added_assets/circle.png';
+import { Calendar, momentLocalizer} from 'react-big-calendar';
+import moment from 'moment';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
+import events from "./user_data/events";
+import MediaQuery from 'react-responsive';
 import streak from "./added_assets/streak.png";
 import MediaQuery from 'react-responsive';
 import process from './jsonProcesser';
@@ -26,6 +37,7 @@ const Dashboard = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [eventsData, setEventsData] = useState(events);
     const [selectedDate, setSelectedDate] = useState(null); // NEW
+    const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget)
@@ -60,8 +72,27 @@ const Dashboard = () => {
                 return taskDate.isSame(selected);
             });
         }
-
         const tasks = filteredTasks.map((task, idx) => <TaskList key={idx} task={task} display={display} />);
+    const toTaskDetail = (event) => {
+        console.log(taskArray)
+        const index = taskArray.findIndex(task => task.name == event.title)
+        var foundTask = null;
+        if (index != -1){
+            foundTask = taskArray[index];
+        } else {
+            foundTask = null
+            console.log(event);
+        }
+
+        navigate("/Task_Detail", {state: {
+            name: foundTask.name,
+            points: foundTask.points,
+            priority: foundTask.priority,
+            date: foundTask.date,
+            details: foundTask.details,
+            bounty: foundTask.bounty
+        }})
+    }
 
         if (display === 'desktop') {
             return (
@@ -158,6 +189,7 @@ const Dashboard = () => {
                         endAccessor="end"
                         events={eventArray}
                         onSelectSlot={handleSelectDate}
+                        events = {eventArray}
                         onSelectEvent = {(event) => toTaskDetail(event)}
                     />
                 </Box>

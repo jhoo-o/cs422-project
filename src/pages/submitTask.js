@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import {AppBar, Box, Container, List, ListItemText, ListItemButton, Divider, Toolbar, 
-    IconButton, Icon, SvgIcon, ListItem, ListItemAvatar, Avatar, Stack, Typography,
-    FormGroup,
-    FormControlLabel, TextField,
+import {AppBar, Box, Container, Toolbar, 
+    IconButton, Typography,TextField,
     Button} from "@mui/material";
-import {ArrowBack, Settings} from '@mui/icons-material';
+import {ArrowBack} from '@mui/icons-material';
 import { useNavigate } from "react-router-dom";
 import process from './jsonProcesser';
 
