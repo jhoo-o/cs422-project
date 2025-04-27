@@ -25,7 +25,7 @@ const Dashboard = () => {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const [eventsData, setEventsData] = useState(events);
-    const [selectedDate, setSelectedDate] = useState(null); // NEW
+    const [selectedDate, setSelectedDate] = useState(null); 
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget)
