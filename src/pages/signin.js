@@ -2,11 +2,8 @@ import {useNavigate} from "react-router-dom";
 import {Container, Typography, Stack, TextField, 
     Button, Link
 } from "@mui/material";
-<<<<<<< HEAD
-=======
 import {ArrowBack, Settings} from '@mui/icons-material';
 import { useState } from "react";
->>>>>>> eaff9cc3d94531af0515940c3a39d263b855e006
 
 const Signin = () => {
 
