@@ -107,6 +107,17 @@ class process{
         this.tasks.sort((a, b) => a.date > b.date ? 1 : -1)
         localStorage.setItem('tasks', JSON.stringify(this.tasks))
     }
+    deleteEventByTitle(title) {
+        const index = this.events.findIndex(event => event.title === title);
+        console.log(index);
+        if (index !== -1) {
+            this.events.splice(index, 1);
+        } else {
+            console.log('DELETE EVENT FAILED');
+        }
+        localStorage.setItem('events', JSON.stringify(this.events));
+    }
+    
 
 }
 
