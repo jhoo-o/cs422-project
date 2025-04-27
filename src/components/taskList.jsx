@@ -25,7 +25,8 @@ const TaskList = (task, display) => {
     console.log({display});
     const TimeDiamond = (date) =>{
         
-        let startingDate = new Date('04/30/2025'); // hard coding start date just for example
+        let startingDate = new Date();        
+        // let startingDate = new Date('04/30/2025'); // hard coding start date just for example
 
         let utc1 = Date.UTC(startingDate.getFullYear(), startingDate.getMonth(), startingDate.getDate());
 
