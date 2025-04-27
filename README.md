@@ -19,3 +19,12 @@ application if you don't have them already:
 'npm install dayjs'
 
 To start the application, navigate to the directory containing the react project, and run 'npm start'
+
+CHANGES FROM WIREFRAME:
+
+No sub-tasks:
+    We found from feedback that it was unnecessary and we decided to remove the feature
+
+Addition of setting areas:
+    We found that leaving the settings page blank wouldn't properly show how it would 
+    function, so we added some basic setting sub areas.
