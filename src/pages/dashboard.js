@@ -48,7 +48,7 @@ const Dashboard = () => {
 
     const toSignin = (event) => {
         event.preventDefault();
-        navigate('/Signup');
+        navigate('/');
     };
 
     const TaskListing = ({ display, selectedDate }) => {
