@@ -29,7 +29,7 @@ const TerminateAccount = () => {
     return (
         <>
             <SettingsBar previousDest={"/Settings"}/>
-            <Container sx={{height:"30%", width:"50%", backgroundColor:'#e8f1ff', mt:15,
+            <Container sx={{height:"30%", width:"90%", backgroundColor:'#e8f1ff', mt:15,
                 justifyContent:"center", flexGrow: 1, boxShadow: 10, borderRadius: 7, padding: 5, paddingBottom: 5}}>
                 <Typography variant="h5" sx={{flexGrow: 1, textAlign: "center", fontWeight: "bold"}}>
                     Delete Account
