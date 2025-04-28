@@ -72,6 +72,7 @@ const Task_Detail = () => {
     const open0 = Boolean(anchorEl0);
 
     const boxStyle = {flexGrow: 1, p: 4, display: 'flex', flexDirection: 'row', alignItems: 'center', paddingTop: 10};
+    const boxStyle2 = {flexGrow: 1, p: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', paddingTop: 4};
 
     const [inputValuePoints, setInputValuePoints] = useState(state.points);
     const [inputValuePriority, setInputValuePriority] = useState(state.priority);
@@ -100,7 +101,7 @@ const Task_Detail = () => {
                 </AppBar>
             </Box>
             <Box sx = {{flexGrow: 1, display: 'flex', flexDirection: 'column'}}>
-                <Box sx = {boxStyle}>
+                <Box sx = {boxStyle2}>
                     <Typography variant = 'h3' sx = {{paddingRight: 5}}>
                         Points:
                     </Typography>
@@ -115,13 +116,13 @@ const Task_Detail = () => {
                         <Typography sx={{p:1}}>Allocate as many arbitrary 'points' that you expect the task to take</Typography>
                     </Popover>
                 </Box>
-                <Box sx = {boxStyle}>
+                <Box sx = {boxStyle2}>
                     <Typography variant = 'h3' sx = {{paddingRight: 5}}>
                        Priority Level:
                     </Typography>
                     <NumberField value = {inputValuePriority} onChange = {(e, v) => setInputValuePriority(v)} min = {0}/>
                 </Box>
-                <Box sx = {boxStyle}>
+                <Box sx = {boxStyle2}>
                     <Typography variant = 'h3' sx = {{paddingRight: 5}}>
                         Due Date:
                     </Typography>
@@ -132,12 +133,12 @@ const Task_Detail = () => {
                         </DemoContainer>
                     </LocalizationProvider>
                 </Box>
-                <Box sx = {boxStyle}>
+                <Box sx = {boxStyle2}>
                     <Typography variant = 'h3' sx = {{paddingRight: 5}}>
                         Details:
                     </Typography>
-                    <TextField  label="Name here..." variant="filled" size = 'medium' rows={8} 
-                    multiline = {true} sx={{width: '30rem'}} value = {inputValueDetail}
+                    <TextField  label="Name here..." variant="filled" size = 'medium' rows={3} 
+                    multiline = {true} sx={{width: '70%'}} value = {inputValueDetail}
                     onChange = {(e) => setInputValueDetail(e.target.value)}/>
                 </Box>
             </Box>
