@@ -43,7 +43,7 @@ const TaskList = (task, display) => {
             return (
                 <Box width = '8vh' height = '8vh' sx = {{position: 'relative', justifyContent:'center', alignItems:'center', display: 'flex'}}>
                     <img src = {redDia} alt = 'today' style = {{width: '100%', height:'100%', objectFit: 'contain', position: 'absolute'}}/>
-                    <Typography sx = {{position: 'absolute',  flexGrow:1, fontSize:'2vh'}} align='center'>
+                    <Typography sx = {{position: 'absolute',  flexGrow:1, fontSize:'1.5vh'}} align='center'>
                         TODAY
                     </Typography>
                 </Box>
@@ -52,7 +52,7 @@ const TaskList = (task, display) => {
             return (
                 <Box width = '8vh' height = '8vh' sx = {{position: 'relative', justifyContent:'center', alignItems:'center', display: 'flex'}}>
                     <img src = {oraDia} alt = '1-3 days' style = {{width: '100%', height:'100%', objectFit: 'contain', position: 'absolute'}}/>
-                    <Typography sx = {{position: 'absolute',  flexGrow:1, fontSize:'2vh'}} align='center'>
+                    <Typography sx = {{position: 'absolute',  flexGrow:1, fontSize:'1.5vh'}} align='center'>
                         {dayDifference} days
                     </Typography>
                 </Box>
@@ -61,7 +61,7 @@ const TaskList = (task, display) => {
             return (
                 <Box width = '8vh' height = '8vh' sx = {{position: 'relative', justifyContent:'center', alignItems:'center', display: 'flex'}}>
                     <img src = {greDia} alt = '4+ days' style = {{width: '100%', height:'100%', objectFit: 'contain', position: 'absolute'}}/>
-                    <Typography sx = {{position: 'absolute',  flexGrow:1, fontSize: '16px'}} align='center'>
+                    <Typography sx = {{position: 'absolute',  flexGrow:1, fontSize: '1.5vh'}} align='center'>
                         {dayDifference} days
                     </Typography>
                 </Box>
