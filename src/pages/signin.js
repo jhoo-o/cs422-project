@@ -28,7 +28,7 @@ const Signin = () => {
     }
 
     return (
-        <Container sx={{height:"40%", width:"50%", backgroundColor:'#e8f1ff', mt:15,
+        <Container sx={{height:"40%", width:"90%", backgroundColor:'#e8f1ff', mt:15,
             justifyContent:"center", flexGrow: 1, boxShadow: 10, borderRadius: 7, padding: 5, paddingBottom: 5}}>
             <Container fixed sx={{flexGrow: 1, width: "100%", justifyContent:"center"}}>
                 <Typography variant="h5">
