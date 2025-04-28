@@ -110,7 +110,7 @@ const Dashboard = () => {
             {/* Mobile */}
             <MediaQuery maxWidth={1081}>
                 {/*WHY ARE COMMENTS LIKE THIS, anyways stole this box from matthew, store settings bar*/}
-                <Box sx={{ flexGrow: 1, height: '4vh', justifyContent: 'space-between' }}>
+                <Box sx={{ flexGrow: 1, justifyContent: 'space-between' }}>
                     <AppBar position="static">
                         <Toolbar sx={{ justifyContent: 'space-between' }}>
                             <Box>
@@ -177,7 +177,7 @@ const Dashboard = () => {
 
             {/* Desktop */}
             <MediaQuery minWidth={1082}>
-                <Box sx={{ flexGrow: 1, height: '8vh' }}>
+                <Box sx={{ flexGrow: 1 }}>
                     <AppBar position="static">
                         <Toolbar sx={{ justifyContent: 'space-between' }}>
                             <Box>
