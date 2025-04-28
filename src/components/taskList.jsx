@@ -41,7 +41,7 @@ const TaskList = (task, display) => {
         //console.log(date.date)
         if (dayDifference == 0){
             return (
-                <Box width = '8vw' height = '8vh' sx = {{position: 'relative', justifyContent:'center', alignItems:'center', display: 'flex'}}>
+                <Box width = '8vh' height = '8vh' sx = {{position: 'relative', justifyContent:'center', alignItems:'center', display: 'flex'}}>
                     <img src = {redDia} alt = 'today' style = {{width: '100%', height:'100%', objectFit: 'contain', position: 'absolute'}}/>
                     <Typography sx = {{position: 'absolute',  flexGrow:1, fontSize:'2vh'}} align='center'>
                         TODAY
@@ -50,7 +50,7 @@ const TaskList = (task, display) => {
             )
         } else if (dayDifference>=1 && dayDifference <=3){
             return (
-                <Box width = '8vw' height = '8vh' sx = {{position: 'relative', justifyContent:'center', alignItems:'center', display: 'flex'}}>
+                <Box width = '8vh' height = '8vh' sx = {{position: 'relative', justifyContent:'center', alignItems:'center', display: 'flex'}}>
                     <img src = {oraDia} alt = '1-3 days' style = {{width: '100%', height:'100%', objectFit: 'contain', position: 'absolute'}}/>
                     <Typography sx = {{position: 'absolute',  flexGrow:1, fontSize:'2vh'}} align='center'>
                         {dayDifference} days
@@ -59,9 +59,9 @@ const TaskList = (task, display) => {
             )
         } else {
             return (
-                <Box width = '8vw' height = '8vh' sx = {{position: 'relative', justifyContent:'center', alignItems:'center', display: 'flex'}}>
+                <Box width = '8vh' height = '8vh' sx = {{position: 'relative', justifyContent:'center', alignItems:'center', display: 'flex'}}>
                     <img src = {greDia} alt = '4+ days' style = {{width: '100%', height:'100%', objectFit: 'contain', position: 'absolute'}}/>
-                    <Typography sx = {{position: 'absolute',  flexGrow:1, fontSize:'2vh'}} align='center'>
+                    <Typography sx = {{position: 'absolute',  flexGrow:1, fontSize: '16px'}} align='center'>
                         {dayDifference} days
                     </Typography>
                 </Box>
@@ -83,7 +83,7 @@ const TaskList = (task, display) => {
                                 {task.task.name}
                             </Typography>
                             <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
-                                <Typography variant = 'body2' sx = {{fontSize: '2vh', p:1.5}}>
+                                <Typography variant = 'body2' sx = {{fontSize: '2.75vh', p:1.5}}>
                                 {task.task.points==1 ? task.task.points+'pt' :task.task.points+'pts'}
                                 </Typography>
                             </Box>
@@ -107,22 +107,22 @@ const TaskList = (task, display) => {
                     <TimeDiamond date={task.task.date}/>
                     <Stack spacing = {1} divider = {<Divider variant='middle'/>} sx={{width: 1, p:1}}>
                         <Box sx={{display:'flex', justifyContent:'space-between', width: 1, fontSize: '0.8rem'}}>
-                            <Typography variant='body2' sx = {{fontSize: '2.75vw'}}>
+                            <Typography variant='body2' sx = {{fontSize: '4vw'}}>
                                 {task.task.name}
                             </Typography>
                             <Box sx={{display:'flex', justifyContent:'center', background: '#D3D3D3', width: '4em', height: '4em', borderRadius: '1em'}}>
-                                <Typography variant = 'body2' sx = {{fontSize: '2vw', p:1.5}}>
+                                <Typography variant = 'body2' sx = {{fontSize: '3vw', p:1.5}}>
                                     {task.task.points==1 ? task.task.points+'pt' : task.task.points+'pts'}
                                 </Typography>
                             </Box>
                         </Box>
                         
                         <Box sx={{display:'flex', justifyContent:'space-between', width: 1}}>
-                            <Typography variant='body2' sx={{color: '#d3d3d3', fontSize: '2vw'}} >
+                            <Typography variant='body2' sx={{color: '#454545', fontSize: '3vw'}} >
                                 {task.task.details}
                             </Typography>
                         
-                            <Typography variant = 'body2' align = 'center' sx={{fontSize: '2vw'}}>
+                            <Typography variant = 'body2' align = 'center' sx={{fontSize: '3vw'}}>
                                 {task.task.bounty != 0 ? '$'+task.task.bounty:''}
                             </Typography>
                         </Box>
